@@ -1,7 +1,8 @@
 export default function GoogleLoginButton() {
   const handleGoogleLogin = () => {
     // redirect to backend Google OAuth
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || "localhost:5000";
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    console.log(" Backend URL:", backendUrl);
     window.location.href = `${backendUrl}/auth/google`;
   };
 
