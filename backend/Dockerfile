@@ -1,4 +1,3 @@
-
 FROM node:18-slim AS base
 
 # Set working directory

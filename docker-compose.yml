@@ -24,7 +24,7 @@ services:
       PORT: 5000
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
-      GOOGLE_CALLBACK_URL: http://localhost:5000/auth/google/callback
+      GOOGLE_CALLBACK_URL: ${process.env.REACT_APP_BACKEND_URL}/auth/google/callback
       FRONTEND_URL: http://localhost:5173
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}

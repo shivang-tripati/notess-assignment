@@ -27,7 +27,7 @@ export default function OtpInput({ value, onChange, email, remember }: Props) {
   const handleResend = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/auth/request-otp",
+        `${process.env.REACT_APP_BACKEND_URL}/auth/request-otp`,
         { email, remember },
         { withCredentials: true }
       );

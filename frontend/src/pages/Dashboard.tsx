@@ -35,12 +35,16 @@ export default function Dashboard() {
   // Fetch user and notes
   useEffect(() => {
     axios
-      .get<User>("http://localhost:5000/users/me", { withCredentials: true })
+      .get<User>(`${process.env.REACT_APP_BACKEND_URL}/users/me`, {
+        withCredentials: true,
+      })
       .then((res) => setUser(res.data))
       .catch(() => navigate("/signin"));
 
     axios
-      .get<Note[]>("http://localhost:5000/notes", { withCredentials: true })
+      .get<Note[]>(`${process.env.REACT_APP_BACKEND_URL}/notes`, {
+        withCredentials: true,
+      })
       .then((res) => setNotes(res.data));
   }, [navigate]);
 
@@ -48,7 +52,7 @@ export default function Dashboard() {
     if (!content.trim()) return;
 
     const res = await axios.post<Note>(
-      "http://localhost:5000/notes",
+      "${process.env.REACT_APP_BACKEND_URL}/notes",
       { content },
       { withCredentials: true }
     );
@@ -57,7 +61,7 @@ export default function Dashboard() {
   };
 
   const deleteNote = async (id: string) => {
-    await axios.delete(`http://localhost:5000/notes/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/notes/${id}`, {
       withCredentials: true,
     });
     setNotes(notes.filter((n) => n.id !== id));
