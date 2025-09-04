@@ -27,7 +27,7 @@ export default function OtpInput({ value, onChange, email, remember }: Props) {
   const handleResend = async () => {
     try {
       await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/request-otp`,
+        `${import.meta.env.VITE_BACKEND_URL}/auth/request-otp`,
         { email, remember },
         { withCredentials: true }
       );
@@ -67,7 +67,7 @@ export default function OtpInput({ value, onChange, email, remember }: Props) {
           <button
             type="button"
             onClick={handleResend}
-            className="flex items-center gap-1 text-blue-400 text-sm text-blue-500 hover:underline"
+            className="flex items-center gap-1 text-sm text-blue-500 hover:underline"
           >
             <RefreshCw size={14} />
             Resend OTP

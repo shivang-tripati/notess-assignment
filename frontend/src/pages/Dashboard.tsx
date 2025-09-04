@@ -35,14 +35,14 @@ export default function Dashboard() {
   // Fetch user and notes
   useEffect(() => {
     axios
-      .get<User>(`${process.env.REACT_APP_BACKEND_URL}/users/me`, {
+      .get<User>(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {
         withCredentials: true,
       })
       .then((res) => setUser(res.data))
       .catch(() => navigate("/signin"));
 
     axios
-      .get<Note[]>(`${process.env.REACT_APP_BACKEND_URL}/notes`, {
+      .get<Note[]>(`${import.meta.env.VITE_BACKEND_URL}/notes`, {
         withCredentials: true,
       })
       .then((res) => setNotes(res.data));
@@ -52,7 +52,7 @@ export default function Dashboard() {
     if (!content.trim()) return;
 
     const res = await axios.post<Note>(
-      "${process.env.REACT_APP_BACKEND_URL}/notes",
+      "${import.meta.env.VITE_BACKEND_URL}/notes",
       { content },
       { withCredentials: true }
     );
@@ -61,7 +61,7 @@ export default function Dashboard() {
   };
 
   const deleteNote = async (id: string) => {
-    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/notes/${id}`, {
+    await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/notes/${id}`, {
       withCredentials: true,
     });
     setNotes(notes.filter((n) => n.id !== id));

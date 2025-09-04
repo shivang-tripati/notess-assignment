@@ -19,7 +19,7 @@ export default function Signin() {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/verify-otp`,
+        `${import.meta.env.VITE_BACKEND_URL}/auth/verify-otp`,
         {
           email,
           otp,
@@ -40,9 +40,11 @@ export default function Signin() {
   };
 
   const handleOtp = async () => {
+    console.log("Requesting OTP for", email);
+    console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/request-otp`,
+        `${import.meta.env.VITE_BACKEND_URL}/auth/request-otp`,
         {
           email,
         },
