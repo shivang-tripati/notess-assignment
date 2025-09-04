@@ -13,7 +13,7 @@ router.get(
 // Step 2: Callback after Google auth
 router.get(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "http://localhost:3000/signin" }),
+  passport.authenticate("google", { failureRedirect: `${process.env['FRONTEND_URL']}/signin` }),
   (req: any, res) => {
     const token = jwt.sign({ userId: req.user.id }, process.env["JWT_SECRET"]!, {
       expiresIn: "1h",
