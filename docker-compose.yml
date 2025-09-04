@@ -25,7 +25,7 @@ services:
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
       GOOGLE_CALLBACK_URL: ${process.env.REACT_APP_BACKEND_URL}/auth/google/callback
-      FRONTEND_URL: http://localhost:5173
+      FRONTEND_URL: ${PROCESS.env.FRONTEND_URL}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
     depends_on:
